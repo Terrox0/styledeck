@@ -1,0 +1,29 @@
+{
+  "name": "styledeck",
+  "version": "0.1.0",
+  "description": "8 design-direction packs that stop AI coding agents from shipping the same purple-gradient website.",
+  "main": "bin/styledeck.js",
+  "bin": {
+    "styledeck": "./bin/styledeck.js"
+  },
+  "type": "module",
+  "files": [
+    "bin",
+    "packs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "screenshot": "node scripts/screenshot.mjs"
+  },
+  "keywords": [
+    "design-tokens",
+    "ai-agent",
+    "design-system",
+    "css",
+    "skills",
+    "cursor-rules"
+  ],
+  "author": "styledeck contributors",
+  "license": "MIT"
+}
