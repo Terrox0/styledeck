@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARGIN // TTY1 TERMINAL MARGINALIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sd-bg: #0B0F0C;
+      --sd-bg-surface: #121914;
+      --sd-bg-panel: #17211A;
+      --sd-ink: #C9F2D0;
+      --sd-ink-muted: #6B9C74;
+      --sd-accent: #5CFF8A;
+      --sd-alert: #FF5C5C;
+      --sd-border: 1px solid #243828;
+      --sd-border-active: 1px solid #5CFF8A;
+      --sd-font: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--sd-bg);
+      color: var(--sd-ink);
+      font-family: var(--sd-font);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding: 0 1rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 1.5rem 0 3rem;
+    }
+
+    /* Top telemetry line */
+    .telemetry-bar {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8125rem;
+      color: var(--sd-ink-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .status-ok {
+      color: var(--sd-accent);
+      font-weight: 700;
+    }
+
+    /* Terminal Nav */
+    header.term-nav {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      margin-bottom: 2.5rem;
+    }
+    .term-window-title {
+      background: #1B281E;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8125rem;
+      color: var(--sd-ink-muted);
+      border-bottom: var(--sd-border);
+      display: flex;
+      justify-content: space-between;
+    }
+    .term-nav-links {
+      padding: 0.8rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .term-nav-links a {
+      color: var(--sd-ink);
+      text-decoration: none;
+    }
+    .term-nav-links a:hover {
+      color: var(--sd-accent);
+      text-decoration: underline;
+    }
+
+    /* ASCII Line Divider */
+    .ascii-rule {
+      color: var(--sd-ink-muted);
+      user-select: none;
+      margin: 2.5rem 0 1.5rem;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    /* Hero */
+    section.hero-console {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+    .prompt-line {
+      color: var(--sd-accent);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    h1.hero-title {
+      font-size: clamp(1.85rem, 4vw, 3rem);
+      line-height: 1.15;
+      color: var(--sd-ink);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .cursor-block {
+      display: inline-block;
+      width: 0.6em;
+      height: 1.15em;
+      background: var(--sd-accent);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .hero-narrative {
+      color: var(--sd-ink-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .btn-term {
+      display: inline-block;
+      border: 1px solid var(--sd-accent);
+      background: transparent;
+      color: var(--sd-accent);
+      padding: 0.65rem 1.25rem;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .btn-term:hover {
+      background: var(--sd-accent);
+      color: var(--sd-bg);
+    }
+    .btn-term.dim {
+      border-color: var(--sd-ink-muted);
+      color: var(--sd-ink-muted);
+    }
+    .btn-term.dim:hover {
+      background: var(--sd-ink-muted);
+      color: var(--sd-bg);
+    }
+
+    /* Section Headings */
+    .section-prompt {
+      color: var(--sd-accent);
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .feature-panel {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      padding: 1.5rem;
+    }
+    .feature-tag {
+      color: var(--sd-accent);
+      font-size: 0.8125rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-panel h3 {
+      font-size: 1.15rem;
+      color: var(--sd-ink);
+      margin-bottom: 0.75rem;
+    }
+    .feature-panel p {
+      color: var(--sd-ink-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Testimonial */
+    .log-transcript {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      padding: 1.75rem;
+      margin-bottom: 3rem;
+    }
+    .log-header {
+      color: var(--sd-ink-muted);
+      font-size: 0.8125rem;
+      border-bottom: var(--sd-border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .log-transcript blockquote {
+      font-size: 1.15rem;
+      color: var(--sd-ink);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .log-author {
+      color: var(--sd-accent);
+      font-size: 0.875rem;
+    }
+
+    /* Pricing ASCII Ledger */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .pricing-box {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pricing-box.active {
+      border: var(--sd-border-active);
+    }
+    .box-title {
+      color: var(--sd-accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .box-rate {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sd-ink);
+      margin-bottom: 1rem;
+    }
+    .box-list {
+      list-style: none;
+      color: var(--sd-ink-muted);
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .box-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* FAQ */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .faq-panel {
+      border: var(--sd-border);
+      background: var(--sd-bg-surface);
+      padding: 1.25rem;
+    }
+    .faq-panel h4 {
+      color: var(--sd-ink);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .faq-panel p {
+      color: var(--sd-ink-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Footer */
+    footer.term-footer {
+      border-top: var(--sd-border);
+      padding-top: 2rem;
+      font-size: 0.8125rem;
+      color: var(--sd-ink-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    @media (max-width: 800px) {
+      .features-grid, .pricing-grid, .faq-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="telemetry-bar">
+      <span>TTY1: 115200 BAUD</span>
+      <span>BUFFER: 4.2KB</span>
+      <span>STATUS: <span class="status-ok">ALL_DAEMONS_HEALTHY</span></span>
+      <span>PID: 1042</span>
+    </div>
+
+    <header class="term-nav">
+      <div class="term-window-title">
+        <span>root@margin-box:~</span>
+        <span>bash 5.2.15</span>
+      </div>
+      <nav class="term-nav-links">
+        <a href="#features">[ ./sys_features ]</a>
+        <a href="#review">[ ./cat_review.log ]</a>
+        <a href="#tiers">[ ./plan_tariffs ]</a>
+        <a href="#faq">[ ./man_help ]</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-console">
+        <div class="prompt-line">margin:~$ ./bin/init-workspace --target=scholia</div>
+        <h1 class="hero-title">Persistent marginalia for air-gapped terminal workstations.<span class="cursor-block"></span></h1>
+        <p class="hero-narrative">Margin discards bloated graphical canvas wrappers. Your critiques remain anchored to document block hashes as native CommonMark on your SSD.</p>
+        <div class="hero-buttons">
+          <a href="#tiers" class="btn-term">[ $ curl -sSL margin.run | sh ]</a>
+          <a href="#features" class="btn-term dim">[ read --architecture-spec ]</a>
+        </div>
+      </section>
+
+      <div class="ascii-rule">+==================================================================================+</div>
+      <div class="section-prompt">&gt; margin --inspect-modules</div>
+      <section id="features" class="features-grid">
+        <article class="feature-panel">
+          <div class="feature-tag">[BLOCK_01]</div>
+          <h3>LATERAL MARGIN ANCHORS</h3>
+          <p>Comments bind directly to cryptographic block hashes. Edit source paragraphs without breaking marginal commentary offsets.</p>
+        </article>
+        <article class="feature-panel">
+          <div class="feature-tag">[BLOCK_02]</div>
+          <h3>LOCAL-ONLY STORAGE DIRECTORIES</h3>
+          <p>Zero remote SQLite silos or vendor sync. All notes are standard UTF-8 files readable via standard grep, awk, and sed.</p>
+        </article>
+        <article class="feature-panel">
+          <div class="feature-tag">[BLOCK_03]</div>
+          <h3>DETERMINISTIC LINK MATRIX</h3>
+          <p>Traverse bi-directional citations with index files that load in under 2ms without heavy JavaScript engines.</p>
+        </article>
+      </section>
+
+      <div class="ascii-rule">+----------------------------------------------------------------------------------+</div>
+      <div class="section-prompt">&gt; cat /var/log/audit/review_rostova.log</div>
+      <section id="review" class="log-transcript">
+        <div class="log-header">TIMESTAMP: 2026-10-24T18:42:01Z | HOST: EPISTEM-NODE-04</div>
+        <blockquote>&ldquo;Margin is the only note environment that treats the command line with respect. Zero memory leaks, zero telemetry beacons, and my annotations stay beside the code exactly where I left them.&rdquo;</blockquote>
+        <div class="log-author">&gt; signed: Elena Rostova, Ph.D. // Cognitive Research Group</div>
+      </section>
+
+      <div class="ascii-rule">+==================================================================================+</div>
+      <div class="section-prompt">&gt; margin plan --list</div>
+      <section id="tiers" class="pricing-grid">
+        <div class="pricing-box">
+          <div>
+            <div class="box-title">[READER]</div>
+            <div class="box-rate">$0.00</div>
+            <ul class="box-list">
+              <li>+ Local filesystem engine</li>
+              <li>+ Unlimited markdown vaults</li>
+              <li>+ Full terminal air-gap support</li>
+              <li>+ MIT open architecture</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-term dim">[ PULL_FREE ]</a>
+        </div>
+        <div class="pricing-box active">
+          <div>
+            <div class="box-title">[SCHOLAR]</div>
+            <div class="box-rate">$64.00 <span style="font-size:0.875rem; color:var(--sd-ink-muted);">/yr</span></div>
+            <ul class="box-list">
+              <li>+ P2P encrypted socket sync</li>
+              <li>+ PDF vector marginalia parser</li>
+              <li>+ Auto-citation pipeline</li>
+              <li>+ Priority bug triage</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-term">[ PURCHASE_TOKEN ]</a>
+        </div>
+        <div class="pricing-box">
+          <div>
+            <div class="box-title">[PATRON]</div>
+            <div class="box-rate">$180.00 <span style="font-size:0.875rem; color:var(--sd-ink-muted);">once</span></div>
+            <ul class="box-list">
+              <li>+ Lifetime perpetual license</li>
+              <li>+ Unstable nightly repo feeds</li>
+              <li>+ Direct author shell session</li>
+              <li>+ Commercial site rights</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-term dim">[ BUY_LIFETIME ]</a>
+        </div>
+      </section>
+
+      <div class="ascii-rule">+----------------------------------------------------------------------------------+</div>
+      <div class="section-prompt">&gt; margin --help faq</div>
+      <section id="faq" class="faq-grid">
+        <div class="faq-panel">
+          <h4>Q: Where are files stored?</h4>
+          <p>In standard POSIX directory hierarchies on your local disk as plain .md files.</p>
+        </div>
+        <div class="faq-panel">
+          <h4>Q: Can I use terminal editors?</h4>
+          <p>Yes. Compatible with Neovim, Emacs, Helix, and standard CLI terminal pipes.</p>
+        </div>
+        <div class="faq-panel">
+          <h4>Q: Does Margin transmit data?</h4>
+          <p>Zero outgoing network sockets opened by default. Zero analytics beacons.</p>
+        </div>
+        <div class="faq-panel">
+          <h4>Q: How are blocks hashed?</h4>
+          <p>SHA-256 digests over normalized sentence boundaries guarantee durability.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="term-footer">
+      <div>
+        <span>[SYS: OK] &middot; MARGIN CORE ENGINE &middot; MIT LICENSE</span>
+      </div>
+      <div>
+        <span>UPTIME: 99.998% &middot; RETURN CODE: 0</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

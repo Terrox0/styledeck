@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARGIN &mdash; International Typographic Notebook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Schibsted+Grotesk:ital,wght@0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sd-bg: #FFFFFF;
+      --sd-bg-subtle: #F6F6F6;
+      --sd-ink: #0A0A0A;
+      --sd-ink-muted: #555555;
+      --sd-accent: #E10600;
+      --sd-grid-line: #E5E5E5;
+      --sd-font-heading: 'Schibsted Grotesk', -apple-system, sans-serif;
+      --sd-font-body: 'Hanken Grotesk', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--sd-bg);
+      color: var(--sd-ink);
+      font-family: var(--sd-font-body);
+      font-size: 1.0625rem;
+      line-height: 1.55;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 12-column grid system */
+    .grid-12 {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* System Header */
+    header.system-header {
+      border-bottom: 1px solid var(--sd-grid-line);
+      padding: 1.5rem 0;
+      margin-bottom: 4rem;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .brand-id {
+      font-family: var(--sd-font-heading);
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--sd-ink);
+    }
+    .brand-id span {
+      color: var(--sd-accent);
+      margin-left: 0.25rem;
+    }
+    .meta-index {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--sd-ink-muted);
+    }
+    nav.system-nav {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    nav.system-nav a {
+      color: var(--sd-ink);
+      text-decoration: none;
+    }
+    nav.system-nav a:hover {
+      color: var(--sd-accent);
+    }
+
+    /* Hero */
+    section.hero {
+      border-bottom: 1px solid var(--sd-grid-line);
+      padding-bottom: 5rem;
+      margin-bottom: 4rem;
+    }
+    .hero-col-main {
+      grid-column: 1 / span 8;
+    }
+    .hero-col-side {
+      grid-column: 9 / span 4;
+      border-left: 1px solid var(--sd-grid-line);
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-index-tag {
+      font-family: var(--sd-font-heading);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--sd-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+    h1.hero-title {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(2.75rem, 6vw, 5rem);
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .hero-lead {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--sd-ink-muted);
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    .btn-swiss {
+      display: inline-block;
+      background: var(--sd-ink);
+      color: var(--sd-bg);
+      font-family: var(--sd-font-heading);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      transition: background 150ms ease;
+    }
+    .btn-swiss:hover {
+      background: var(--sd-accent);
+    }
+    .side-spec-item {
+      margin-bottom: 2rem;
+    }
+    .side-spec-item .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sd-accent);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .side-spec-item p {
+      font-size: 0.9375rem;
+      color: var(--sd-ink-muted);
+    }
+
+    /* Section divider & numbers */
+    .section-header {
+      border-top: 1px solid var(--sd-ink);
+      padding-top: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .huge-numeral {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 0.9;
+      color: var(--sd-ink);
+      margin-bottom: 1rem;
+    }
+    .huge-numeral.accent {
+      color: var(--sd-accent);
+    }
+    .section-title {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    /* Features */
+    .features-section {
+      border-bottom: 1px solid var(--sd-grid-line);
+      padding-bottom: 5rem;
+      margin-bottom: 5rem;
+    }
+    .feature-column {
+      grid-column: span 4;
+      border-top: 1px solid var(--sd-grid-line);
+      padding-top: 1.5rem;
+    }
+    .feature-index {
+      font-family: var(--sd-font-heading);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--sd-accent);
+      margin-bottom: 0.75rem;
+    }
+    .feature-column h3 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-align: left;
+    }
+    .feature-column p {
+      color: var(--sd-ink-muted);
+      font-size: 1rem;
+    }
+
+    /* Testimonial */
+    .testimonial-section {
+      border-bottom: 1px solid var(--sd-grid-line);
+      padding-bottom: 5rem;
+      margin-bottom: 5rem;
+    }
+    .quote-column-left {
+      grid-column: 1 / span 3;
+      font-family: var(--sd-font-heading);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--sd-accent);
+      letter-spacing: 0.05em;
+    }
+    .quote-column-right {
+      grid-column: 4 / span 9;
+    }
+    .quote-column-right blockquote {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .quote-affiliation {
+      font-size: 1rem;
+      color: var(--sd-ink-muted);
+    }
+    .quote-affiliation strong {
+      color: var(--sd-ink);
+    }
+
+    /* Pricing */
+    .pricing-section {
+      border-bottom: 1px solid var(--sd-grid-line);
+      padding-bottom: 5rem;
+      margin-bottom: 5rem;
+    }
+    .pricing-col {
+      grid-column: span 4;
+      border-top: 2px solid var(--sd-ink);
+      padding-top: 1.5rem;
+    }
+    .pricing-col.accented {
+      border-top-color: var(--sd-accent);
+    }
+    .pricing-name {
+      font-family: var(--sd-font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-rate {
+      font-family: var(--sd-font-heading);
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .pricing-specs {
+      list-style: none;
+      border-top: 1px solid var(--sd-grid-line);
+      margin-bottom: 2rem;
+    }
+    .pricing-specs li {
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--sd-grid-line);
+      font-size: 0.9375rem;
+      color: var(--sd-ink-muted);
+    }
+
+    /* FAQ */
+    .faq-section {
+      border-bottom: 1px solid var(--sd-grid-line);
+      padding-bottom: 5rem;
+      margin-bottom: 4rem;
+    }
+    .faq-item {
+      grid-column: span 6;
+      border-top: 1px solid var(--sd-grid-line);
+      padding-top: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .faq-item h4 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+      color: var(--sd-ink-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer.system-footer {
+      padding: 3rem 0 4rem;
+      font-size: 0.8125rem;
+      color: var(--sd-ink-muted);
+    }
+    .footer-col {
+      grid-column: span 3;
+    }
+    .footer-col strong {
+      color: var(--sd-ink);
+      font-family: var(--sd-font-heading);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-col-main, .hero-col-side { grid-column: span 12; }
+      .hero-col-side { border-left: none; border-top: 1px solid var(--sd-grid-line); padding-left: 0; padding-top: 2rem; }
+      .feature-column { grid-column: span 12; }
+      .quote-column-left, .quote-column-right { grid-column: span 12; }
+      .pricing-col { grid-column: span 12; }
+      .faq-item { grid-column: span 12; }
+      .footer-col { grid-column: span 6; margin-bottom: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="system-header">
+      <div class="header-content">
+        <a href="#" class="brand-id">MARGIN<span>/</span>GRID</a>
+        <div class="meta-index">ISO-SPEC 8601 &middot; SYSTEM NOTEBOOK ARCHIVE</div>
+        <nav class="system-nav">
+          <a href="#principles">01 Principles</a>
+          <a href="#benchmark">02 Field Record</a>
+          <a href="#acquisition">03 Index</a>
+          <a href="#inquiries">04 Query</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero grid-12">
+        <div class="hero-col-main">
+          <div class="hero-index-tag">00 // System Specification</div>
+          <h1 class="hero-title">Objective clarity for persistent intellectual commentary.</h1>
+          <p class="hero-lead">Margin eliminates interface noise. Your thoughts belong in the coordinate space adjacent to the source material, anchored by mathematical block hashes.</p>
+          <a href="#acquisition" class="btn-swiss">Initialize System Access</a>
+        </div>
+        <div class="hero-col-side">
+          <div class="side-spec-item">
+            <div class="label">Storage Standard</div>
+            <p>100% human-readable CommonMark standard files persisted directly on local POSIX filesystems.</p>
+          </div>
+          <div class="side-spec-item">
+            <div class="label">Zero Latency</div>
+            <p>Compiled natively in systems-level Rust. Instant text rendering without Electron web view overhead.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="principles" class="features-section">
+        <div class="section-header grid-12">
+          <div style="grid-column: span 12;">
+            <div class="huge-numeral accent">01</div>
+            <h2 class="section-title">Structural Properties</h2>
+          </div>
+        </div>
+        <div class="grid-12">
+          <div class="feature-column">
+            <div class="feature-index">01.1</div>
+            <h3>Coordinate-Locked Margins</h3>
+            <p>Comments occupy the lateral axis beside your text. Documents undergo structural revisions while commentary remains linked to block coordinates.</p>
+          </div>
+          <div class="feature-column">
+            <div class="feature-index">01.2</div>
+            <h3>Local Filesystem Primacy</h3>
+            <p>Zero proprietary blobs or remote database locks. Your library functions fully when detached from all network connections.</p>
+          </div>
+          <div class="feature-column">
+            <div class="feature-index">01.3</div>
+            <h3>Bi-Directional Schema</h3>
+            <p>Mathematical link matrices establish connections across separate volumes, building a durable intellectual topology.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="benchmark" class="testimonial-section grid-12">
+        <div class="quote-column-left">
+          <span>Field Verification &middot; 2026</span>
+        </div>
+        <div class="quote-column-right">
+          <blockquote>&ldquo;Margin replaced four separate reference tools with a single disciplined canvas. Notes remain exactly where my critique was conceived: in the margins.&rdquo;</blockquote>
+          <div class="quote-affiliation">
+            <strong>Dr. Elena Rostova</strong> &mdash; Fellow in Cognitive Epistemology, Zurich Research Consortium
+          </div>
+        </div>
+      </section>
+
+      <section id="acquisition" class="pricing-section">
+        <div class="section-header grid-12">
+          <div style="grid-column: span 12;">
+            <div class="huge-numeral">02</div>
+            <h2 class="section-title">Distribution Model</h2>
+          </div>
+        </div>
+        <div class="grid-12">
+          <div class="pricing-col">
+            <div class="pricing-name">Reader Edition</div>
+            <div class="pricing-rate">$0</div>
+            <ul class="pricing-specs">
+              <li>Complete local marginalia engine</li>
+              <li>Unlimited filesystem vaults</li>
+              <li>Strict offline execution</li>
+              <li>Open specifications</li>
+            </ul>
+            <a href="#" class="btn-swiss" style="background:#555;">Deploy Reader</a>
+          </div>
+          <div class="pricing-col accented">
+            <div class="pricing-name" style="color:var(--sd-accent);">Scholar Edition</div>
+            <div class="pricing-rate" style="color:var(--sd-accent);">$64<span style="font-size:1rem; font-weight:500; color:var(--sd-ink-muted);"> / year</span></div>
+            <ul class="pricing-specs">
+              <li>Zero-knowledge encrypted sync</li>
+              <li>PDF marginalia vector compiler</li>
+              <li>Automated citation matrix</li>
+              <li>Direct maintainer channels</li>
+            </ul>
+            <a href="#" class="btn-swiss">Deploy Scholar</a>
+          </div>
+          <div class="pricing-col">
+            <div class="pricing-name">Patron Edition</div>
+            <div class="pricing-rate">$180<span style="font-size:1rem; font-weight:500; color:var(--sd-ink-muted);"> once</span></div>
+            <ul class="pricing-specs">
+              <li>Perpetual lifetime license key</li>
+              <li>Access to unstable branch commits</li>
+              <li>Commercial license permissions</li>
+              <li>Technical roadmap advisory</li>
+            </ul>
+            <a href="#" class="btn-swiss" style="background:#0A0A0A;">Deploy Patron</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="inquiries" class="faq-section">
+        <div class="section-header grid-12">
+          <div style="grid-column: span 12;">
+            <div class="huge-numeral">03</div>
+            <h2 class="section-title">Technical Answers</h2>
+          </div>
+        </div>
+        <div class="grid-12">
+          <div class="faq-item">
+            <h4>Where are data files written?</h4>
+            <p>Directly to standard local directories as plain UTF-8 CommonMark files without binary wrapping.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Can standard markdown directories be mounted?</h4>
+            <p>Yes. Margin mounts existing folder trees natively without migration scripts or index rebuilds.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Is network connectivity required for core operations?</h4>
+            <p>No. Margin is built for air-gapped workstations and operates autonomously without connection.</p>
+          </div>
+          <div class="faq-item">
+            <h4>How is block attachment preserved across edits?</h4>
+            <p>Content-addressed hashing tracks linguistic paragraph boundaries rather than unstable line offsets.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="system-footer grid-12">
+      <div class="footer-col">
+        <strong>Margin Project</strong>
+        <p>A disciplined typographic interface for rigorous human thought.</p>
+      </div>
+      <div class="footer-col">
+        <strong>Specifications</strong>
+        <p>12-Column Grid / Schibsted Grotesk / 0px Radius</p>
+      </div>
+      <div class="footer-col">
+        <strong>Integrity</strong>
+        <p>Zero telemetry. Zero tracking beacons. Distributed under MIT License.</p>
+      </div>
+      <div class="footer-col">
+        <strong>Index</strong>
+        <p>&copy; 2026 Margin. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
