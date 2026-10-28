@@ -1,0 +1,55 @@
+:root {
+  /* Terminal Palette: CRT phosphor cathode black, readable mint phosphor, glowing neon signal */
+  --sd-bg: #0B0F0C;
+  --sd-bg-surface: #121914;
+  --sd-bg-panel: #17211A;
+  --sd-ink: #C9F2D0;
+  --sd-ink-muted: #6B9C74;
+  --sd-ink-dim: #3C5942;
+  --sd-accent: #5CFF8A;
+  --sd-accent-glow: rgba(92, 255, 138, 0.25);
+  --sd-alert: #FF5C5C;
+  --sd-border-color: #243828;
+
+  /* Typography: Pure uncompromising monospace */
+  --sd-font-heading: 'JetBrains Mono', 'Courier New', monospace;
+  --sd-font-body: 'JetBrains Mono', 'Courier New', monospace;
+  --sd-font-mono: 'JetBrains Mono', monospace;
+
+  /* Type Scale */
+  --sd-text-display: clamp(2rem, 4.5vw, 3.5rem);
+  --sd-text-title: clamp(1.5rem, 3vw, 2.25rem);
+  --sd-text-h2: clamp(1.2rem, 2vw, 1.6rem);
+  --sd-text-h3: 1.1rem;
+  --sd-text-body: 0.95rem;
+  --sd-text-code: 0.875rem;
+
+  /* Line Heights */
+  --sd-leading-tight: 1.2;
+  --sd-leading-normal: 1.6;
+
+  /* Spacing Scale */
+  --sd-space-1: 0.25rem;
+  --sd-space-2: 0.5rem;
+  --sd-space-3: 0.75rem;
+  --sd-space-4: 1rem;
+  --sd-space-6: 1.5rem;
+  --sd-space-8: 2rem;
+  --sd-space-12: 3rem;
+
+  /* Terminal Geometry: 0px radius, terminal box-drawing borders */
+  --sd-radius: 0px;
+  --sd-border: 1px solid var(--sd-border-color);
+  --sd-border-active: 1px solid var(--sd-accent);
+
+  /* Shadows: Phosphor faint screen bloom */
+  --sd-shadow-bloom: 0 0 12px var(--sd-accent-glow);
+
+  /* Cursor & Animation */
+  --sd-cursor-blink: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

@@ -1,0 +1,51 @@
+:root {
+  /* Editorial Palette: warm literary newsprint, rich deep carbon, terracotta ink */
+  --sd-bg: #FAF6EF;
+  --sd-bg-surface: #F3EBDD;
+  --sd-ink: #1C1917;
+  --sd-ink-muted: #57534E;
+  --sd-ink-subtle: #8A857D;
+  --sd-accent: #B4432F;
+  --sd-accent-hover: #963523;
+  --sd-rule: #D6CEBE;
+  --sd-rule-strong: #1C1917;
+
+  /* Typography */
+  --sd-font-heading: 'Fraunces', Georgia, serif;
+  --sd-font-body: 'Newsreader', Garamond, Georgia, serif;
+  --sd-font-meta: 'Newsreader', serif;
+
+  /* Type Scale */
+  --sd-text-display: clamp(2.75rem, 6vw, 4.5rem);
+  --sd-text-title: clamp(1.85rem, 3.5vw, 2.75rem);
+  --sd-text-h2: clamp(1.5rem, 2.5vw, 2rem);
+  --sd-text-h3: 1.25rem;
+  --sd-text-body: 1.125rem;
+  --sd-text-small: 0.9375rem;
+  --sd-text-meta: 0.8125rem;
+
+  /* Line Heights */
+  --sd-leading-tight: 1.08;
+  --sd-leading-snug: 1.25;
+  --sd-leading-normal: 1.65;
+
+  /* Spacing Scale */
+  --sd-space-1: 0.25rem;
+  --sd-space-2: 0.5rem;
+  --sd-space-3: 0.75rem;
+  --sd-space-4: 1rem;
+  --sd-space-6: 1.5rem;
+  --sd-space-8: 2rem;
+  --sd-space-12: 3rem;
+  --sd-space-16: 4rem;
+  --sd-space-24: 6rem;
+
+  /* Structural Geometry: Sharp print borders, no cards, no rounded corners */
+  --sd-radius: 0px;
+  --sd-border-thin: 1px solid var(--sd-rule);
+  --sd-border-thick: 2px solid var(--sd-rule-strong);
+  --sd-shadow: none;
+
+  /* Motion: Gentle opacity dissolves only */
+  --sd-transition-fade: opacity 240ms ease-in-out;
+}

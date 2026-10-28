@@ -1,0 +1,50 @@
+:root {
+  /* Neo-Brutalist Palette: high-contrast cream canvas, uncompromising ink, saturated vermilion */
+  --sd-bg: #FFF8E7;
+  --sd-bg-surface: #FFFFFF;
+  --sd-ink: #111111;
+  --sd-ink-muted: #333333;
+  --sd-accent: #FF5A36;
+  --sd-accent-secondary: #FFDE59;
+  --sd-accent-tertiary: #5CE1E6;
+
+  /* Typography */
+  --sd-font-heading: 'Archivo Black', 'Arial Black', sans-serif;
+  --sd-font-body: 'IBM Plex Mono', 'Courier New', monospace;
+  --sd-font-mono: 'IBM Plex Mono', monospace;
+
+  /* Type Scale */
+  --sd-text-display: clamp(2.5rem, 5.5vw, 4.25rem);
+  --sd-text-title: clamp(1.75rem, 3.5vw, 2.5rem);
+  --sd-text-h2: clamp(1.35rem, 2.5vw, 1.85rem);
+  --sd-text-h3: 1.15rem;
+  --sd-text-body: 1rem;
+  --sd-text-small: 0.875rem;
+
+  /* Line Heights */
+  --sd-leading-tight: 1.0;
+  --sd-leading-snug: 1.2;
+  --sd-leading-normal: 1.5;
+
+  /* Spacing Scale */
+  --sd-space-1: 0.25rem;
+  --sd-space-2: 0.5rem;
+  --sd-space-3: 0.75rem;
+  --sd-space-4: 1rem;
+  --sd-space-6: 1.5rem;
+  --sd-space-8: 2rem;
+  --sd-space-12: 3rem;
+  --sd-space-16: 4rem;
+
+  /* Structural Geometry: Heavy 3px solid ink strokes, raw unrounded corners */
+  --sd-border-thick: 3px solid var(--sd-ink);\n  --sd-border-heavy: 4px solid var(--sd-ink);
+  --sd-radius: 0px;
+
+  /* Hard Offset Drop Shadows: No blur, sharp cutouts */
+  --sd-shadow-hard-sm: 3px 3px 0px var(--sd-ink);
+  --sd-shadow-hard: 5px 5px 0px var(--sd-ink);
+  --sd-shadow-hard-lg: 8px 8px 0px var(--sd-ink);
+
+  /* Motion: Instant translation on active/hover, no smooth easing or blurs */
+  --sd-transition-snap: transform 80ms ease, box-shadow 80ms ease;
+}

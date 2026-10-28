@@ -1,0 +1,52 @@
+:root {
+  /* Swiss-Grid Palette: pure optical white, deep carbon black, International Typographic Style red */
+  --sd-bg: #FFFFFF;
+  --sd-bg-subtle: #F6F6F6;
+  --sd-ink: #0A0A0A;
+  --sd-ink-muted: #4B4B4B;
+  --sd-ink-subtle: #8E8E8E;
+  --sd-accent: #E10600;
+  --sd-accent-hover: #B80500;
+  --sd-grid-line: #E5E5E5;
+
+  /* Typography: Objective, rigorous grotesque pairing */
+  --sd-font-heading: 'Schibsted Grotesk', -apple-system, sans-serif;
+  --sd-font-body: 'Hanken Grotesk', -apple-system, sans-serif;
+  --sd-font-numeral: 'Schibsted Grotesk', sans-serif;
+
+  /* Type Scale */
+  --sd-text-display: clamp(3rem, 7vw, 5.5rem);
+  --sd-text-numeral-huge: clamp(3.5rem, 8vw, 7rem);
+  --sd-text-title: clamp(2rem, 4vw, 3.25rem);
+  --sd-text-h2: clamp(1.5rem, 2.75vw, 2.25rem);
+  --sd-text-h3: 1.25rem;
+  --sd-text-body: 1.0625rem;
+  --sd-text-meta: 0.8125rem;
+
+  /* Line Heights */
+  --sd-leading-solid: 0.95;
+  --sd-leading-tight: 1.1;
+  --sd-leading-snug: 1.3;
+  --sd-leading-normal: 1.55;
+
+  /* Spacing Scale (8px modular base) */
+  --sd-space-1: 0.25rem;
+  --sd-space-2: 0.5rem;
+  --sd-space-3: 0.75rem;
+  --sd-space-4: 1rem;
+  --sd-space-6: 1.5rem;
+  --sd-space-8: 2rem;
+  --sd-space-12: 3rem;
+  --sd-space-16: 4rem;
+  --sd-space-24: 6rem;
+  --sd-space-32: 8rem;
+
+  /* Strict Geometry: 0px border radius, precise 1px hairline rules */
+  --sd-radius: 0px;
+  --sd-border-hairline: 1px solid var(--sd-grid-line);
+  --sd-border-black: 1px solid var(--sd-ink);
+  --sd-shadow: none;
+
+  /* Motion: Instantaneous or minimal linear opacity */
+  --sd-transition-quick: opacity 120ms linear;
+}
