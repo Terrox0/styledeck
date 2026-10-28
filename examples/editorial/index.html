@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margin — The Literary Notebook for Rigorous Thought</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sd-bg: #FAF6EF;
+      --sd-bg-surface: #F3EBDD;
+      --sd-ink: #1C1917;
+      --sd-ink-muted: #57534E;
+      --sd-accent: #B4432F;
+      --sd-accent-hover: #8F2E1E;
+      --sd-rule: #D6CEBE;
+      --sd-rule-strong: #1C1917;
+      --sd-font-heading: 'Fraunces', Georgia, serif;
+      --sd-font-body: 'Newsreader', Garamond, Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--sd-bg);
+      color: var(--sd-ink);
+      font-family: var(--sd-font-body);
+      font-size: 1.125rem;
+      line-height: 1.65;
+      padding: 0 1.25rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* Masthead */
+    header.masthead {
+      border-bottom: 2px solid var(--sd-rule-strong);
+      padding: 1.75rem 0 1rem;
+      margin-bottom: 3.5rem;
+    }
+    .masthead-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sd-ink-muted);
+      border-bottom: 1px solid var(--sd-rule);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .masthead-brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand-title {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--sd-ink);
+      text-decoration: none;
+    }
+    nav.masthead-nav {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9375rem;
+      font-style: italic;
+    }
+    nav.masthead-nav a {
+      color: var(--sd-ink);
+      text-decoration: none;
+      transition: color 200ms ease;
+    }
+    nav.masthead-nav a:hover {
+      color: var(--sd-accent);
+    }
+
+    /* Hero Section */
+    section.hero {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 3.5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--sd-rule);
+    }
+    .hero-lead-kicker {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--sd-accent);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    h1.hero-title {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(2.5rem, 5vw, 4.25rem);
+      line-height: 1.08;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.75rem;
+    }
+    .hero-body {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--sd-ink);
+    }
+    .hero-body p.drop-cap::first-letter {
+      font-family: var(--sd-font-heading);
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin: 0.15rem 0.65rem 0 0;
+      color: var(--sd-accent);
+      font-weight: 700;
+    }
+    .hero-actions {
+      margin-top: 2.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-editorial {
+      display: inline-block;
+      border: 1px solid var(--sd-ink);
+      background: var(--sd-ink);
+      color: var(--sd-bg);
+      font-family: var(--sd-font-body);
+      font-size: 1rem;
+      padding: 0.75rem 1.75rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 200ms ease, color 200ms ease;
+    }
+    .btn-editorial:hover {
+      background: var(--sd-accent);
+      border-color: var(--sd-accent);
+    }
+    .link-editorial {
+      color: var(--sd-ink);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      font-style: italic;
+    }
+    .hero-sidebar {
+      border-left: 1px solid var(--sd-rule);
+      padding-left: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar-note {
+      background: var(--sd-bg-surface);
+      padding: 1.5rem;
+      border-left: 3px solid var(--sd-accent);
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-note h3 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+    .sidebar-note p {
+      font-size: 0.9375rem;
+      color: var(--sd-ink-muted);
+    }
+
+    /* Section Headers */
+    .section-headline {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--sd-rule-strong);
+      padding-bottom: 0.5rem;
+      margin: 4.5rem 0 2.5rem;
+    }
+    .section-headline h2 {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 600;
+    }
+    .section-headline span {
+      font-style: italic;
+      color: var(--sd-ink-muted);
+      font-size: 0.9375rem;
+    }
+
+    /* Features: 3 Columns without cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      border-bottom: 1px solid var(--sd-rule);
+      padding-bottom: 4rem;
+    }
+    .feature-col {
+      border-left: 1px solid var(--sd-rule);
+      padding-left: 1.75rem;
+    }
+    .feature-num {
+      font-family: var(--sd-font-heading);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--sd-accent);
+      margin-bottom: 0.75rem;
+    }
+    .feature-col h3 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.35rem;
+      line-height: 1.25;
+      margin-bottom: 0.85rem;
+    }
+    .feature-col p {
+      font-size: 1rem;
+      color: var(--sd-ink-muted);
+      line-height: 1.6;
+    }
+
+    /* Testimonial: Full Bleed Pullquote */
+    section.testimonial {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--sd-rule);
+    }
+    blockquote.pullquote {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    blockquote.pullquote p {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.15rem);
+      line-height: 1.35;
+      font-style: italic;
+      color: var(--sd-ink);
+      margin-bottom: 1.5rem;
+    }
+    cite.author {
+      display: block;
+      font-style: normal;
+      font-size: 0.9375rem;
+      letter-spacing: 0.05em;
+      color: var(--sd-accent);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    cite.author span {
+      color: var(--sd-ink-muted);
+      text-transform: none;
+      font-style: italic;
+      letter-spacing: normal;
+    }
+
+    /* Pricing: Clean Comparison Ledger */
+    .pricing-ledger {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 4rem;
+    }
+    .pricing-ledger th, .pricing-ledger td {
+      padding: 1.25rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--sd-rule);
+      font-size: 1rem;
+    }
+    .pricing-ledger th {
+      font-family: var(--sd-font-heading);
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--sd-rule-strong);
+      font-weight: 600;
+    }
+    .pricing-ledger .price-tag {
+      font-family: var(--sd-font-heading);
+      font-size: 1.75rem;
+      color: var(--sd-accent);
+      font-weight: 700;
+    }
+
+    /* FAQ */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      border-bottom: 1px solid var(--sd-rule);
+      padding-bottom: 4rem;
+    }
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+    .faq-item h4 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+      font-size: 1rem;
+      color: var(--sd-ink-muted);
+    }
+
+    /* Footer Colophon */
+    footer.colophon {
+      padding: 4rem 0 3rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      font-size: 0.875rem;
+      color: var(--sd-ink-muted);
+    }
+    .colophon-title {
+      font-family: var(--sd-font-heading);
+      font-size: 1.15rem;
+      color: var(--sd-ink);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      section.hero { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--sd-rule); padding-top: 2rem; }
+      .features-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .feature-col { border-left: 2px solid var(--sd-accent); }
+      .faq-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+      .pricing-ledger { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="masthead">
+      <div class="masthead-top">
+        <span>The Margin Gazette & Archive</span>
+        <span>Issue No. 14 &middot; Autumn 2026</span>
+        <span>Plaintext Edition</span>
+      </div>
+      <div class="masthead-brand">
+        <a href="#" class="brand-title">MARGIN.</a>
+        <nav class="masthead-nav">
+          <a href="#features">Architecture</a>
+          <a href="#dispatch">Dispatch</a>
+          <a href="#ledger">Submissions</a>
+          <a href="#inquiry">Colloquy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-main">
+          <p class="hero-lead-kicker">Marginalia & Reflection</p>
+          <h1 class="hero-title">Where thoughtful reading meets permanent marginal commentary.</h1>
+          <div class="hero-body">
+            <p class="drop-cap">
+              Modern note applications treat your thoughts like detached warehouse inventory. Margin restores the centuries-old tradition of the scholia: placing your private reflections, critiques, and citations directly in the outer perimeter of your source documents.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a href="#ledger" class="btn-editorial">Acquire the Autumn Build</a>
+            <a href="#features" class="link-editorial">Examine the architectural principles &rarr;</a>
+          </div>
+        </div>
+        <aside class="hero-sidebar">
+          <div class="sidebar-note">
+            <h3>Local-First Integrity</h3>
+            <p>Every note exists as human-readable CommonMark on your storage drives. No remote sync required to access your intellectual property.</p>
+          </div>
+          <div class="sidebar-note">
+            <h3>Content-Addressed Blocks</h3>
+            <p>Marginal annotations anchor to document paragraphs via cryptographic block digests, surviving text edits without detachment.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features">
+        <div class="section-headline">
+          <h2>Three Pillars of the System</h2>
+          <span>Section I &middot; Foundations</span>
+        </div>
+        <div class="features-grid">
+          <article class="feature-col">
+            <div class="feature-num">&sect; 01</div>
+            <h3>Perpetual In-Context Marginalia</h3>
+            <p>Anchor comments directly opposite paragraphs, equations, and code blocks. Never lose the intellectual context where an insight first surfaced.</p>
+          </article>
+          <article class="feature-col">
+            <div class="feature-num">&sect; 02</div>
+            <h3>Cryptographic Local Vaults</h3>
+            <p>Your research stays in standard plain text on your filesystem. Zero proprietary database locks, zero mandatory subscriptions, zero telemetry.</p>
+          </article>
+          <article class="feature-col">
+            <div class="feature-num">&sect; 03</div>
+            <h3>Bi-Directional Lexical Links</h3>
+            <p>Interconnect citations across volumes. Form an unbroken genealogy of ideas that deepens in utility across decades of study.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="dispatch" class="testimonial">
+        <blockquote class="pullquote">
+          <p>&ldquo;Margin completely transformed how I annotate archival manuscripts. The commentary stays pinned right beside the text, exactly where contemplation occurred, rather than languishing in an orphaned database.&rdquo;</p>
+          <cite class="author">Elena Rostova, Ph.D. &mdash; <span>Principal Research Fellow, Institute of Cognitive Epistemology</span></cite>
+        </blockquote>
+      </section>
+
+      <section id="ledger">
+        <div class="section-headline">
+          <h2>Licensing & Distribution</h2>
+          <span>Section II &middot; The Ledger</span>
+        </div>
+        <table class="pricing-ledger">
+          <thead>
+            <tr>
+              <th>Edition</th>
+              <th>Term</th>
+              <th>Privileges</th>
+              <th>Fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Reader</strong></td>
+              <td>Perpetual</td>
+              <td>Full local marginalia, unlimited vaults, standard markdown parsing</td>
+              <td class="price-tag">$0</td>
+            </tr>
+            <tr>
+              <td><strong>Scholar</strong></td>
+              <td>Annual</td>
+              <td>Encrypted peer-to-peer sync, PDF manuscript rendering, citation export</td>
+              <td class="price-tag">$64 <small style="font-size:0.875rem; color:var(--sd-ink-muted);">/ year</small></td>
+            </tr>
+            <tr>
+              <td><strong>Patron</strong></td>
+              <td>Lifetime</td>
+              <td>Perpetual license, private developmental correspondence, all major revisions</td>
+              <td class="price-tag">$180 <small style="font-size:0.875rem; color:var(--sd-ink-muted);">once</small></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="inquiry">
+        <div class="section-headline">
+          <h2>Inquiries & Clarifications</h2>
+          <span>Section III &middot; Colloquy</span>
+        </div>
+        <div class="faq-layout">
+          <div class="faq-item">
+            <h4>Where are my files persisted?</h4>
+            <p>Directly inside your designated filesystem directories as plain CommonMark text files. You retain permanent ownership of all notes.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Can I import existing markdown libraries?</h4>
+            <p>Yes. Margin ingests existing directories instantly without mutating your formatting or nesting schemes.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Does the application require network access?</h4>
+            <p>Never. The core software is fully functional air-gapped without an active internet connection.</p>
+          </div>
+          <div class="faq-item">
+            <h4>How do annotations survive text revisions?</h4>
+            <p>Content-addressed block hashing anchors marginal notes to linguistic sentences rather than fragile line numbers.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="colophon">
+      <div>
+        <p class="colophon-title">The Margin Project</p>
+        <p>Typeset in Fraunces and Newsreader. Handcrafted with reverence for paper typography.</p>
+      </div>
+      <div>
+        <p>&copy; 2026 Margin Publications. MIT License. Distributed without commercial tracking.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
