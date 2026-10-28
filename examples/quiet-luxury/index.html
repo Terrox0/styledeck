@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARGIN &mdash; The Nocturnal Atelier for Thought</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sd-bg: #0E0E10;
+      --sd-bg-surface: #141418;
+      --sd-bg-card: #18181E;
+      --sd-ink: #EDE6DA;
+      --sd-ink-muted: #A39D93;
+      --sd-accent: #B89B5E;
+      --sd-accent-hover: #D4B677;
+      --sd-border: 1px solid rgba(237, 230, 218, 0.1);
+      --sd-border-gold: 1px solid rgba(184, 155, 94, 0.35);
+      --sd-font-heading: 'Cormorant Garamond', Georgia, serif;
+      --sd-font-body: 'Manrope', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--sd-bg);
+      color: var(--sd-ink);
+      font-family: var(--sd-font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 0 5rem;
+    }
+
+    /* Minimalist header */
+    header.luxury-nav {
+      border-bottom: var(--sd-border);
+      padding: 1.5rem 0;
+      margin-bottom: 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .brand-mark {
+      font-family: var(--sd-font-heading);
+      font-size: 1.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sd-ink);
+      text-decoration: none;
+    }
+    .brand-mark span {
+      color: var(--sd-accent);
+      font-style: italic;
+    }
+    nav.luxury-links {
+      display: flex;
+      gap: 2.5rem;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+    nav.luxury-links a {
+      color: var(--sd-ink-muted);
+      text-decoration: none;
+      transition: color 300ms ease;
+    }
+    nav.luxury-links a:hover {
+      color: var(--sd-accent);
+    }
+
+    /* Hero */
+    section.hero {
+      border-bottom: var(--sd-border);
+      padding-bottom: 6rem;
+      margin-bottom: 6rem;
+      display: grid;
+      grid-template-columns: 8fr 4fr;
+      gap: 4rem;
+    }
+    .hero-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--sd-accent);
+      margin-bottom: 1.5rem;
+    }
+    h1.hero-title {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(2.75rem, 6vw, 4.75rem);
+      line-height: 1.05;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+      color: var(--sd-ink);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--sd-accent);
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--sd-ink-muted);
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-luxury {
+      display: inline-block;
+      border: var(--sd-border-gold);
+      background: transparent;
+      color: var(--sd-accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      padding: 1rem 2.25rem;
+      text-decoration: none;
+      transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-luxury:hover {
+      background: var(--sd-accent);
+      color: var(--sd-bg);
+    }
+    .btn-luxury.dim {
+      border-color: rgba(237, 230, 218, 0.15);
+      color: var(--sd-ink-muted);
+    }
+    .btn-luxury.dim:hover {
+      border-color: var(--sd-ink);
+      color: var(--sd-ink);
+      background: transparent;
+    }
+    .hero-sidebar {
+      border-left: var(--sd-border);
+      padding-left: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar-clause {
+      margin-bottom: 2rem;
+    }
+    .clause-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--sd-accent);
+      margin-bottom: 0.5rem;
+    }
+    .sidebar-clause p {
+      font-size: 0.875rem;
+      color: var(--sd-ink-muted);
+      font-weight: 300;
+    }
+
+    /* Section Titles */
+    .section-ribbon {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: var(--sd-border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 4rem;
+    }
+    .section-title {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+    }
+    .section-roman {
+      font-family: var(--sd-font-heading);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--sd-accent);
+    }
+
+    /* Features */
+    .features-suite {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      border-bottom: var(--sd-border);
+      padding-bottom: 6rem;
+      margin-bottom: 6rem;
+    }
+    .feature-item {
+      border-top: var(--sd-border);
+      padding-top: 2rem;
+    }
+    .feature-num {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--sd-accent);
+      margin-bottom: 1rem;
+    }
+    .feature-item h3 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+    .feature-item p {
+      color: var(--sd-ink-muted);
+      font-size: 0.9375rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* Testimonial */
+    section.testimonial {
+      border-bottom: var(--sd-border);
+      padding-bottom: 6rem;
+      margin-bottom: 6rem;
+    }
+    .quote-wrap {
+      max-width: 860px;
+    }
+    .quote-wrap blockquote {
+      font-family: var(--sd-font-heading);
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.25;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 2rem;
+      color: var(--sd-ink);
+    }
+    .author-sign {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--sd-accent);
+    }
+    .author-sign span {
+      color: var(--sd-ink-muted);
+      text-transform: none;
+      letter-spacing: normal;
+      font-style: italic;
+    }
+
+    /* Pricing */
+    .pricing-ledger {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      border-bottom: var(--sd-border);
+      padding-bottom: 6rem;
+      margin-bottom: 6rem;
+    }
+    .ledger-block {
+      background: var(--sd-bg-surface);
+      border: var(--sd-border);
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ledger-block.highlight {
+      border: var(--sd-border-gold);
+    }
+    .ledger-tier {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--sd-accent);
+      margin-bottom: 0.75rem;
+    }
+    .ledger-rate {
+      font-family: var(--sd-font-heading);
+      font-size: 3rem;
+      font-weight: 400;
+      margin-bottom: 1.75rem;
+    }
+    .ledger-specs {
+      list-style: none;
+      border-top: var(--sd-border);
+      padding-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .ledger-specs li {
+      font-size: 0.875rem;
+      color: var(--sd-ink-muted);
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+    }
+
+    /* FAQ */
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      border-bottom: var(--sd-border);
+      padding-bottom: 6rem;
+      margin-bottom: 5rem;
+    }
+    .faq-item h4 {
+      font-family: var(--sd-font-heading);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--sd-ink);
+    }
+    .faq-item p {
+      color: var(--sd-ink-muted);
+      font-size: 0.9375rem;
+      font-weight: 300;
+    }
+
+    /* Footer */
+    footer.luxury-footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--sd-ink-muted);
+    }
+
+    @media (max-width: 820px) {
+      section.hero, .features-suite, .pricing-ledger, .faq-layout { grid-template-columns: 1fr; }
+      .hero-sidebar { border-left: none; border-top: var(--sd-border); padding-left: 0; padding-top: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="luxury-nav">
+      <a href="#" class="brand-mark">MARGIN <span>Atelier</span></a>
+      <nav class="luxury-links">
+        <a href="#suite">Architecture</a>
+        <a href="#testament">Testament</a>
+        <a href="#membership">Membership</a>
+        <a href="#dialogue">Dialogue</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="hero-label">The Instrument of Scholia</div>
+          <h1 class="hero-title">Reserved exclusively for <em>discerning scholarship</em> and private contemplation.</h1>
+          <p class="hero-lead">Margin renders annotations with dignified stillness. Your critical notes reside in the outer margins of the manuscript, preserved in local plaintext on your own hardware.</p>
+          <div class="hero-actions">
+            <a href="#membership" class="btn-luxury">Request Vault Access</a>
+            <a href="#suite" class="btn-luxury dim">Examine the Treatise</a>
+          </div>
+        </div>
+        <aside class="hero-sidebar">
+          <div class="sidebar-clause">
+            <div class="clause-label">Autonomous Sanctuary</div>
+            <p>Completely severed from public clouds and telemetry. Your intellectual capital remains private.</p>
+          </div>
+          <div class="sidebar-clause">
+            <div class="clause-label">Permanent Fidelity</div>
+            <p>Stored as human-readable CommonMark standard UTF-8 files, impervious to platform obsolescence.</p>
+          </div>
+        </aside>
+      </section>
+
+      <div class="section-ribbon">
+        <h2 id="suite" class="section-title">The Three Invariants</h2>
+        <span class="section-roman">I</span>
+      </div>
+      <section class="features-suite">
+        <div class="feature-item">
+          <div class="feature-num">Invariant 01</div>
+          <h3>Lateral Marginalia</h3>
+          <p>Commentary sits permanently beside each paragraph. Annotations anchor to cryptographic text digests, remaining steadfast across document edits.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">Invariant 02</div>
+          <h3>Local-First Sovereignty</h3>
+          <p>Every note exists in your own filesystem directory. You own your words completely, without subscription entrapment or remote server dependencies.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">Invariant 03</div>
+          <h3>Genealogy of Ideas</h3>
+          <p>Bi-directional citation links create a private constellation of thought that compounds gracefully over decades of sustained inquiry.</p>
+        </div>
+      </section>
+
+      <section id="testament" class="testimonial">
+        <div class="quote-wrap">
+          <blockquote>&ldquo;Margin is the only software instrument that respects the sanctity of contemplation. Notes stay anchored to the exact paragraph where inspiration struck.&rdquo;</blockquote>
+          <div class="author-sign">Dr. Elena Rostova &mdash; <span>Senior Research Fellow, Zurich Institute</span></div>
+        </div>
+      </section>
+
+      <div class="section-ribbon">
+        <h2 id="membership" class="section-title">Private Tariffs</h2>
+        <span class="section-roman">II</span>
+      </div>
+      <section class="pricing-ledger">
+        <div class="ledger-block">
+          <div>
+            <div class="ledger-tier">Reader</div>
+            <div class="ledger-rate">$0</div>
+            <ul class="ledger-specs">
+              <li>Full local marginalia canvas</li>
+              <li>Unlimited filesystem vaults</li>
+              <li>Complete offline independence</li>
+              <li>CommonMark plaintext fidelity</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-luxury dim">Acquire Reader</a>
+        </div>
+        <div class="ledger-block highlight">
+          <div>
+            <div class="ledger-tier">Scholar</div>
+            <div class="ledger-rate">$64 <small style="font-size:0.9rem; font-family:var(--sd-font-body); color:var(--sd-ink-muted);">/ year</small></div>
+            <ul class="ledger-specs">
+              <li>End-to-end encrypted peer sync</li>
+              <li>PDF manuscript marginalia suite</li>
+              <li>Bibliographic link compiler</li>
+              <li>Private dispatch communication</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-luxury">Subscribe Scholar</a>
+        </div>
+        <div class="ledger-block">
+          <div>
+            <div class="ledger-tier">Patron</div>
+            <div class="ledger-rate">$180 <small style="font-size:0.9rem; font-family:var(--sd-font-body); color:var(--sd-ink-muted);">once</small></div>
+            <ul class="ledger-specs">
+              <li>Perpetual lifetime ownership</li>
+              <li>Nightly private release access</li>
+              <li>Direct founder correspondence</li>
+              <li>Full commercial rights granted</li>
+            </ul>
+          </div>
+          <a href="#" class="btn-luxury dim">Invest Lifetime</a>
+        </div>
+      </section>
+
+      <div class="section-ribbon">
+        <h2 id="dialogue" class="section-title">Dialogue &amp; Clarity</h2>
+        <span class="section-roman">III</span>
+      </div>
+      <section class="faq-layout">
+        <div class="faq-item">
+          <h4>Where is scholarship preserved?</h4>
+          <p>Exclusively on your local machine in designated POSIX directories as clean, standard markdown files.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can existing archives be imported?</h4>
+          <p>Margin ingests your established markdown libraries instantly without modifying formatting or folders.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Does Margin require telecommunication?</h4>
+          <p>Never. Margin is designed for private air-gapped workstations operating without network access.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How do margin anchors endure revisions?</h4>
+          <p>Content-addressed block hashes anchor notes to underlying sentence structures rather than fragile line numbers.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="luxury-footer">
+      <div>
+        <span>Margin Atelier &middot; Geneva &middot; Autumn 2026</span>
+      </div>
+      <div>
+        <span>MIT License &middot; Zero Analytics &middot; All Rights Reserved</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
