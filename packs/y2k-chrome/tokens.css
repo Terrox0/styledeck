@@ -1,0 +1,53 @@
+:root {
+  /* Y2K-Chrome Palette: metallic cyber lavender, deep indigo ink, hot magenta chrome */
+  --sd-bg: #E9EEFF;
+  --sd-bg-surface: #F5F7FF;
+  --sd-bg-chrome: linear-gradient(135deg, #FFFFFF 0%, #D8E0FF 50%, #C4D2FF 100%);
+  --sd-ink: #12123A;
+  --sd-ink-muted: #3F3F73;
+  --sd-accent: #FF3D9A;
+  --sd-accent-text: #B8005A; /* High contrast >= 4.5:1 on light canvas */
+  --sd-accent-cyan: #00D2FF;
+  --sd-accent-lime: #72FF13;
+  --sd-chrome-border: #99B2F5;
+
+  /* Typography: Futuristic cyber display with playful geometric grotesque */
+  --sd-font-heading: 'Unbounded', 'Arial Black', sans-serif;
+  --sd-font-body: 'Sora', -apple-system, sans-serif;
+  --sd-font-badge: 'Unbounded', sans-serif;
+
+  /* Type Scale */
+  --sd-text-display: clamp(2.25rem, 5vw, 3.85rem);
+  --sd-text-title: clamp(1.65rem, 3.25vw, 2.5rem);
+  --sd-text-h2: clamp(1.3rem, 2.25vw, 1.8rem);
+  --sd-text-h3: 1.15rem;
+  --sd-text-body: 1rem;
+  --sd-text-small: 0.875rem;
+  --sd-text-badge: 0.75rem;
+
+  /* Line Heights */
+  --sd-leading-tight: 1.05;
+  --sd-leading-snug: 1.25;
+  --sd-leading-normal: 1.6;
+
+  /* Spacing Scale */
+  --sd-space-1: 0.25rem;
+  --sd-space-2: 0.5rem;
+  --sd-space-3: 0.75rem;
+  --sd-space-4: 1rem;
+  --sd-space-6: 1.5rem;
+  --sd-space-8: 2rem;
+  --sd-space-12: 3rem;
+  --sd-space-16: 4rem;
+
+  /* Geometry & Metallic Surfaces */
+  --sd-radius-pill: 9999px;
+  --sd-radius-bubble: 24px;
+  --sd-border-chrome: 2px solid var(--sd-chrome-border);
+  --sd-border-bubble: 2px solid var(--sd-ink);
+  --sd-shadow-chrome: 0 4px 0px var(--sd-ink);
+  --sd-shadow-sticker: 4px 4px 0px #FF3D9A;
+
+  /* Motion: Playful hover wobble & metallic gleam */
+  --sd-transition-wobble: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}

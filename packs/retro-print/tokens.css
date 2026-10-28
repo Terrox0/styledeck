@@ -1,0 +1,50 @@
+:root {
+  /* Retro-Print Palette: aged parchment cardstock, rich burnt umber, letterpress vermilion */
+  --sd-bg: #F3E9D2;
+  --sd-bg-surface: #E8DDBC;
+  --sd-bg-badge: #E0D3AF;
+  --sd-ink: #2B2118;
+  --sd-ink-muted: #5C4B3C;
+  --sd-ink-subtle: #877361;
+  --sd-accent: #D9482B;
+  --sd-accent-hover: #B83A20;
+  --sd-ink-secondary: #2C4A52;
+  --sd-rule-print: #C5B694;
+
+  /* Typography: Robust display serif with mid-century workhorse sans */
+  --sd-font-heading: 'DM Serif Display', Georgia, serif;
+  --sd-font-body: 'Work Sans', -apple-system, sans-serif;
+  --sd-font-stamp: 'Work Sans', sans-serif;
+
+  /* Type Scale */
+  --sd-text-display: clamp(2.5rem, 5.5vw, 4.25rem);
+  --sd-text-title: clamp(1.75rem, 3.5vw, 2.75rem);
+  --sd-text-h2: clamp(1.35rem, 2.5vw, 1.85rem);
+  --sd-text-h3: 1.15rem;
+  --sd-text-body: 1rem;
+  --sd-text-small: 0.875rem;
+  --sd-text-badge: 0.75rem;
+
+  /* Line Heights */
+  --sd-leading-tight: 1.05;
+  --sd-leading-snug: 1.25;
+  --sd-leading-normal: 1.6;
+
+  /* Spacing Scale */
+  --sd-space-1: 0.25rem;
+  --sd-space-2: 0.5rem;
+  --sd-space-3: 0.75rem;
+  --sd-space-4: 1rem;
+  --sd-space-6: 1.5rem;
+  --sd-space-8: 2rem;
+  --sd-space-12: 3rem;
+  --sd-space-16: 4rem;
+
+  /* Geometry & Print Artifacts */
+  --sd-radius: 2px;
+  --sd-border-print: 2px dashed var(--sd-rule-print);\n  --sd-border-solid: 2px solid var(--sd-ink);
+  --sd-shadow-misprint: 3px 3px 0px var(--sd-accent);
+
+  /* Motion */
+  --sd-transition-ink: filter 150ms ease, transform 150ms ease;
+}
