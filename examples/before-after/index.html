@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styledeck Before & After &mdash; Stopping the Purple Gradient Pandemic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0F1117;
+      color: #E2E8F0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+    .wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    header.header-showcase {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid #1E293B;
+      padding-bottom: 2.5rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #EF4444;
+      color: #FFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #F8FAFC;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    p.subtitle {
+      color: #94A3B8;
+      font-size: 1.15rem;
+      max-width: 760px;
+      margin: 0 auto 1.5rem;
+    }
+    .nav-back {
+      color: #38BDF8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-back:hover { text-decoration: underline; }
+
+    /* Comparison Grid */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .column-panel {
+      background: #1E222D;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+    }
+    .column-header {
+      padding: 1.25rem;
+      border-bottom: 1px solid #334155;
+      background: #181B24;
+    }
+    .column-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .column-header p {
+      font-size: 0.8125rem;
+      color: #94A3B8;
+    }
+    .column-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .badge-bad { background: #7F1D1D; color: #FCA5A5; }
+    .badge-good { background: #14532D; color: #86EFAC; }
+
+    /* Preview frames */
+    .preview-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      font-size: 0.875rem;
+      overflow: hidden;
+    }
+
+    /* 1. Generic AI Default Mock */
+    .ai-default-box {
+      background: radial-gradient(circle at 50% 20%, #2E1065 0%, #0F172A 70%);
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+      border-radius: 8px;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      border: 1px solid #4338CA;
+    }
+    .ai-default-pill {
+      display: inline-block;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      color: #C4B5FD;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+    .ai-default-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #FFFFFF 0%, #A78BFA 60%, #60A5FA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+    .ai-default-sub {
+      color: #94A3B8;
+      font-size: 0.825rem;
+      margin-bottom: 1.25rem;
+    }
+    .ai-default-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%);
+      color: #FFF;
+      font-weight: 600;
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+      margin-bottom: 1.75rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+    .ai-default-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .ai-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .ai-card-icon {
+      width: 28px;
+      height: 28px;
+      background: #4F46E5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* 2. Editorial Mock */
+    .editorial-box {
+      background: #FAF6EF;
+      color: #1C1917;
+      font-family: 'Newsreader', serif;
+      border-radius: 0;
+      padding: 1.75rem 1.25rem;
+      text-align: left;
+      border: 1px solid #D6CEBE;
+    }
+    .editorial-masthead {
+      border-bottom: 1px solid #1C1917;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #57534E;
+      display: flex;
+      justify-content: space-between;
+    }
+    .editorial-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      line-height: 1.15;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #1C1917;
+    }
+    .editorial-drop {
+      float: left;
+      font-family: 'Fraunces', serif;
+      font-size: 2.5rem;
+      line-height: 0.8;
+      margin: 0.1rem 0.4rem 0 0;
+      color: #B4432F;
+      font-weight: 700;
+    }
+    .editorial-columns {
+      border-top: 1px solid #D6CEBE;
+      padding-top: 0.75rem;
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .editorial-col-item {
+      border-left: 2px solid #B4432F;
+      padding-left: 0.6rem;
+    }
+    .editorial-col-item strong {
+      font-family: 'Fraunces', serif;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* 3. Neo-Brutalist Mock */
+    .brutal-box {
+      background: #FFF8E7;
+      color: #111111;
+      font-family: 'IBM Plex Mono', monospace;
+      border-radius: 0;
+      padding: 1.75rem 1.25rem;
+      text-align: left;
+      border: 3px solid #111111;
+      box-shadow: 4px 4px 0px #111111;
+    }
+    .brutal-badge {
+      background: #FF5A36;
+      color: #FFFFFF;
+      border: 2px solid #111111;
+      font-weight: 700;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      box-shadow: 2px 2px 0px #111111;
+    }
+    .brutal-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.4rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      color: #111111;
+    }
+    .brutal-btn {
+      display: inline-block;
+      background: #FF5A36;
+      color: #FFFFFF;
+      border: 2px solid #111111;
+      box-shadow: 3px 3px 0px #111111;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      text-decoration: none;
+    }
+    .brutal-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+    .brutal-card-item {
+      background: #FFFFFF;
+      border: 2px solid #111111;
+      box-shadow: 3px 3px 0px #111111;
+      padding: 0.65rem;
+    }
+    .brutal-card-item strong {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Diagnosis lists */
+    .diagnosis-list {
+      list-style: none;
+      padding: 1.25rem;
+      border-top: 1px solid #334155;
+      background: #181B24;
+      font-size: 0.8125rem;
+    }
+    .diagnosis-list li {
+      margin-bottom: 0.4rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .diagnosis-bad li::before {
+      content: "✕";
+      position: absolute;
+      left: 0;
+      color: #EF4444;
+      font-weight: 700;
+    }
+    .diagnosis-good li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10B981;
+      font-weight: 700;
+    }
+
+    .column-footer {
+      padding: 1rem;
+      border-top: 1px solid #334155;
+      text-align: center;
+    }
+    .btn-view-demo {
+      display: block;
+      background: #334155;
+      color: #FFF;
+      text-decoration: none;
+      padding: 0.6rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 150ms ease;
+    }
+    .btn-view-demo:hover {
+      background: #475569;
+    }
+
+    @media (max-width: 980px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header-showcase">
+      <span class="badge">The Anti-Gradient Manifesto</span>
+      <h1>Before &amp; After: Breaking the AI Monoculture</h1>
+      <p class="subtitle">
+        Every AI coding agent left to its own devices ships the exact same generic template: dark navy canvas, centered purple-blue glow, and three rounded glass cards. Here is what happens when you drop in one Styledeck pack.
+      </p>
+      <a href="../../gallery/index.html" class="nav-back">&larr; Return to Styledeck 8-Pack Gallery</a>
+    </header>
+
+    <div class="comparison-grid">
+      <!-- 1. The Generic AI Default -->
+      <div class="column-panel">
+        <div class="column-header">
+          <span class="column-badge badge-bad">Before // The AI Default</span>
+          <h2>The "Purple Gradient" Trap</h2>
+          <p>What LLMs generate without style directives.</p>
+        </div>
+        <div class="preview-body">
+          <div class="ai-default-box">
+            <span class="ai-default-pill">AI-Powered Solution</span>
+            <div class="ai-default-title">Transform Your Workflow</div>
+            <div class="ai-default-sub">Seamlessly collaborate with next-generation smart note intelligence.</div>
+            <a href="#" class="ai-default-btn">Get Started Free &rarr;</a>
+            <div class="ai-default-cards">
+              <div class="ai-card">
+                <div class="ai-card-icon">⚡</div>
+                <strong style="font-size:0.85rem; display:block; margin-bottom:0.2rem;">Lightning Fast</strong>
+                <p style="font-size:0.75rem; color:#94A3B8;">Hyper-optimized for modern cloud platforms.</p>
+              </div>
+              <div class="ai-card">
+                <div class="ai-card-icon">🔒</div>
+                <strong style="font-size:0.85rem; display:block; margin-bottom:0.2rem;">Enterprise Secure</strong>
+                <p style="font-size:0.75rem; color:#94A3B8;">Bank-grade encryption protecting all data.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="diagnosis-list diagnosis-bad">
+          <li>Generic purple-to-blue radial hero gradient</li>
+          <li>Default Inter/Geist typography everywhere</li>
+          <li>Centered headline + 1 button over 3 icon cards</li>
+          <li>Vague filler copy ("Transform your workflow")</li>
+          <li>Frosted glassmorphism blur and fake neon glow</li>
+        </ul>
+        <div class="column-footer">
+          <span style="font-size:0.8rem; color:#EF4444; font-weight:600;">Standard LLM Output (Unconstrained)</span>
+        </div>
+      </div>
+
+      <!-- 2. Styledeck Editorial -->
+      <div class="column-panel">
+        <div class="column-header">
+          <span class="column-badge badge-good">After // Styledeck: Editorial</span>
+          <h2>The Literary Broadsheet</h2>
+          <p>Injected with <code>styledeck add editorial</code></p>
+        </div>
+        <div class="preview-body">
+          <div class="editorial-box">
+            <div class="editorial-masthead">
+              <span>MARGIN GAZETTE</span>
+              <span>ISSUE NO. 14</span>
+            </div>
+            <div class="editorial-title">Where reading meets permanent marginal commentary.</div>
+            <p style="font-size:0.85rem; color:#57534E; margin-bottom:0.75rem;">
+              <span class="editorial-drop">M</span>odern software treats notes like detached inventory. Margin restores the scholia: placing reflections directly in the document perimeter.
+            </p>
+            <div class="editorial-columns">
+              <div class="editorial-col-item">
+                <strong>§ 01 Perpetual In-Context Marginalia</strong>
+                <p style="font-size:0.75rem; color:#57534E;">Annotations anchor to paragraph block hashes.</p>
+              </div>
+              <div class="editorial-col-item">
+                <strong>§ 02 Local-First Storage</strong>
+                <p style="font-size:0.75rem; color:#57534E;">Stored as human-readable CommonMark files.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="diagnosis-list diagnosis-good">
+          <li>Fraunces &amp; Newsreader serif typography</li>
+          <li>Warm rag paper canvas (#FAF6EF) &amp; charcoal ink</li>
+          <li>Broadsheet masthead with elegant drop cap</li>
+          <li>Zero rounded corners, zero cards, zero drop shadows</li>
+          <li>Specific, hand-crafted architectural copy</li>
+        </ul>
+        <div class="column-footer">
+          <a href="../editorial/index.html" class="btn-view-demo">Open Live Editorial Demo &rarr;</a>
+        </div>
+      </div>
+
+      <!-- 3. Styledeck Neo-Brutalist -->
+      <div class="column-panel">
+        <div class="column-header">
+          <span class="column-badge badge-good">After // Styledeck: Neo-Brutalist</span>
+          <h2>The Hard-Line Raw Grid</h2>
+          <p>Injected with <code>styledeck add neo-brutalist</code></p>
+        </div>
+        <div class="preview-body">
+          <div class="brutal-box">
+            <span class="brutal-badge">AIR-GAPPED ENGINE</span>
+            <div class="brutal-title">STOP LOSING YOUR NOTES IN CLOUD HOLES.</div>
+            <p style="font-size:0.8rem; font-weight:600; margin-bottom:0.75rem;">
+              Margin pins hard-line marginal annotations to your source text. Plain CommonMark files on your SSD.
+            </p>
+            <a href="#" class="brutal-btn">GET MARGIN NOW</a>
+            <div class="brutal-cards">
+              <div class="brutal-card-item">
+                <strong>01 / PARAGRAPH-LOCKED</strong>
+                <p style="font-size:0.75rem;">Notes stay welded to block coordinates across revisions.</p>
+              </div>
+              <div class="brutal-card-item">
+                <strong>02 / LOCAL POSIX DISK</strong>
+                <p style="font-size:0.75rem;">Grep your library with standard CLI terminal tools.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="diagnosis-list diagnosis-good">
+          <li>Heavy Archivo Black &amp; IBM Plex Mono monospace</li>
+          <li>3px solid black borders with 4px hard offset shadows</li>
+          <li>Saturated vermilion accent (#FF5A36) on cream canvas</li>
+          <li>Tactile mechanical press buttons, zero blur</li>
+          <li>Direct, uncompromising engineering tone</li>
+        </ul>
+        <div class="column-footer">
+          <a href="../neo-brutalist/index.html" class="btn-view-demo">Open Live Neo-Brutalist Demo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

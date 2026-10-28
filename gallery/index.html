@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styledeck Gallery &mdash; 8 Opinionated Design Directions for AI Agents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:wght@600&family=DM+Serif+Display&family=Figtree:wght@500;600&family=Fraunces:opsz,wght@9..144,600&family=Hanken+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@600&family=JetBrains+Mono:wght@600&family=Newsreader:opsz,wght@6..72,400&family=Schibsted+Grotesk:wght@700;900&family=Sora:wght@600&family=Unbounded:wght@800&family=Work+Sans:wght@600&family=Young+Serif&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0B0D13;
+      color: #E2E8F0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    header.gallery-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid #1F2433;
+      padding-bottom: 3rem;
+    }
+    .brand-pill {
+      display: inline-block;
+      background: #1E293B;
+      color: #38BDF8;
+      border: 1px solid #334155;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+    h1.gallery-title {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #F8FAFC;
+      margin-bottom: 1rem;
+    }
+    p.gallery-sub {
+      color: #94A3B8;
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin: 0 auto 2rem;
+    }
+    .cta-banner {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .btn-action {
+      display: inline-block;
+      background: #38BDF8;
+      color: #0B0D13;
+      font-weight: 700;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: background 150ms ease;
+    }
+    .btn-action:hover { background: #7DD3FC; }
+    .btn-action.secondary {
+      background: #1E293B;
+      color: #E2E8F0;
+      border: 1px solid #334155;
+    }
+    .btn-action.secondary:hover { background: #334155; }
+
+    /* The 8 Pack Grid */
+    .packs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .pack-card {
+      background: #141722;
+      border: 1px solid #22293C;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .pack-card:hover {
+      transform: translateY(-4px);
+      border-color: #38BDF8;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Card Thumbnail Canvas Preview */
+    .card-thumb {
+      height: 180px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid #22293C;
+      position: relative;
+    }
+    .thumb-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      align-self: flex-start;
+      padding: 0.2rem 0.5rem;
+    }
+    .thumb-headline {
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+    .thumb-swatches {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+
+    /* Thumbnails specific styling */
+    .thumb-editorial { background: #FAF6EF; color: #1C1917; font-family: 'Fraunces', serif; }
+    .thumb-editorial .thumb-tag { background: #F3EBDD; color: #B4432F; border: 1px solid #D6CEBE; }
+    
+    .thumb-neo-brutalist { background: #FFF8E7; color: #111111; font-family: 'Archivo Black', sans-serif; }
+    .thumb-neo-brutalist .thumb-tag { background: #FF5A36; color: #FFFFFF; border: 2px solid #111111; box-shadow: 2px 2px 0px #111; }
+    
+    .thumb-swiss-grid { background: #FFFFFF; color: #0A0A0A; font-family: 'Schibsted Grotesk', sans-serif; }
+    .thumb-swiss-grid .thumb-tag { background: #F6F6F6; color: #E10600; border: 1px solid #E5E5E5; }
+    
+    .thumb-terminal { background: #0B0F0C; color: #C9F2D0; font-family: 'JetBrains Mono', monospace; }
+    .thumb-terminal .thumb-tag { background: #17211A; color: #5CFF8A; border: 1px solid #243828; }
+    
+    .thumb-retro-print { background: #F3E9D2; color: #2B2118; font-family: 'DM Serif Display', serif; }
+    .thumb-retro-print .thumb-tag { background: #E8DDBC; color: #D9482B; border: 1px dashed #2B2118; }
+    
+    .thumb-soft-organic { background: #F4EFE6; color: #2F3A2C; font-family: 'Young Serif', serif; }
+    .thumb-soft-organic .thumb-tag { background: #EAD5C5; color: #C7774B; border-radius: 9999px; }
+    
+    .thumb-quiet-luxury { background: #0E0E10; color: #EDE6DA; font-family: 'Cormorant Garamond', serif; }
+    .thumb-quiet-luxury .thumb-tag { background: #18181E; color: #B89B5E; border: 1px solid rgba(184, 155, 94, 0.3); }
+    
+    .thumb-y2k-chrome { background: linear-gradient(135deg, #FFFFFF 0%, #D8E0FF 50%, #C4D2FF 100%); color: #12123A; font-family: 'Unbounded', sans-serif; }
+    .thumb-y2k-chrome .thumb-tag { background: #FF3D9A; color: #FFF; border-radius: 9999px; }
+
+    /* Card Details */
+    .card-meta {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pack-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 0.5rem;
+    }
+    .pack-fonts {
+      font-size: 0.8125rem;
+      color: #38BDF8;
+      margin-bottom: 0.75rem;
+      font-family: monospace;
+    }
+    .pack-desc {
+      font-size: 0.875rem;
+      color: #94A3B8;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+    .card-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #38BDF8;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    footer.gallery-footer {
+      border-top: 1px solid #1F2433;
+      padding-top: 2.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #64748B;
+    }
+    footer.gallery-footer a { color: #94A3B8; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="gallery-header">
+      <span class="brand-pill">Styledeck Gallery v0.1</span>
+      <h1 class="gallery-title">8 Opinionated Design Directions</h1>
+      <p class="gallery-sub">
+        Pick a style, drop in one file, and your agent stops building purple-gradient websites. Every pack features custom tokens, typography, layout rules, and zero banned patterns.
+      </p>
+      <div class="cta-banner">
+        <a href="../examples/before-after/index.html" class="btn-action">View Before &amp; After Comparison &rarr;</a>
+        <a href="https://github.com" class="btn-action secondary">README &amp; Documentation</a>
+      </div>
+    </header>
+
+    <div class="packs-grid">
+      <!-- 1. Editorial -->
+      <a href="../examples/editorial/index.html" class="pack-card">
+        <div class="card-thumb thumb-editorial">
+          <span class="thumb-tag">01 // Editorial</span>
+          <div class="thumb-headline">The Literary Broadsheet</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#FAF6EF;"></span>
+            <span class="swatch" style="background:#1C1917;"></span>
+            <span class="swatch" style="background:#B4432F;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">editorial</div>
+            <div class="pack-fonts">Fraunces / Newsreader</div>
+            <p class="pack-desc">Warm paper canvas, multi-column magazine layouts, drop caps, thin rules, and subtle fades. Strictly 0px radius, zero cards.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 2. Neo-Brutalist -->
+      <a href="../examples/neo-brutalist/index.html" class="pack-card">
+        <div class="card-thumb thumb-neo-brutalist">
+          <span class="thumb-tag">02 // Neo-Brutalist</span>
+          <div class="thumb-headline">HARD-LINE RAW GRID</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#FFF8E7;"></span>
+            <span class="swatch" style="background:#111111;"></span>
+            <span class="swatch" style="background:#FF5A36;"></span>
+            <span class="swatch" style="background:#FFDE59;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">neo-brutalist</div>
+            <div class="pack-fonts">Archivo Black / IBM Plex Mono</div>
+            <p class="pack-desc">3px thick black borders, hard unblurred 5px offset shadows, cream canvas, and electric vermilion. Mechanical tactile clicks.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 3. Swiss-Grid -->
+      <a href="../examples/swiss-grid/index.html" class="pack-card">
+        <div class="card-thumb thumb-swiss-grid">
+          <span class="thumb-tag">03 // Swiss-Grid</span>
+          <div class="thumb-headline">Disciplined Asymmetry</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#FFFFFF;"></span>
+            <span class="swatch" style="background:#0A0A0A;"></span>
+            <span class="swatch" style="background:#E10600;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">swiss-grid</div>
+            <div class="pack-fonts">Schibsted / Hanken Grotesk</div>
+            <p class="pack-desc">Strict mathematical 12-column grid, huge section numerals, International Typographic signal red, and left-aligned text.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 4. Terminal -->
+      <a href="../examples/terminal/index.html" class="pack-card">
+        <div class="card-thumb thumb-terminal">
+          <span class="thumb-tag">04 // Terminal</span>
+          <div class="thumb-headline">&gt; TTY1 Phosphor</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#0B0F0C;"></span>
+            <span class="swatch" style="background:#C9F2D0;"></span>
+            <span class="swatch" style="background:#5CFF8A;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">terminal</div>
+            <div class="pack-fonts">JetBrains Mono (Both)</div>
+            <p class="pack-desc">Phosphor CRT dark aesthetic, prompt headings, ASCII line dividers, blinking block cursor, and command flags. 100% monospace.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 5. Retro-Print -->
+      <a href="../examples/retro-print/index.html" class="pack-card">
+        <div class="card-thumb thumb-retro-print">
+          <span class="thumb-tag">05 // Retro-Print</span>
+          <div class="thumb-headline">Letterpress Specimen</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#F3E9D2;"></span>
+            <span class="swatch" style="background:#2B2118;"></span>
+            <span class="swatch" style="background:#D9482B;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">retro-print</div>
+            <div class="pack-fonts">DM Serif Display / Work Sans</div>
+            <p class="pack-desc">Two-ink letterpress look, aged manila paper, stamped trademark badges, and slight misprint offsets. Physical print craft.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 6. Soft-Organic -->
+      <a href="../examples/soft-organic/index.html" class="pack-card">
+        <div class="card-thumb thumb-soft-organic">
+          <span class="thumb-tag">06 // Soft-Organic</span>
+          <div class="thumb-headline">Calm Human Earth</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#F4EFE6;"></span>
+            <span class="swatch" style="background:#2F3A2C;"></span>
+            <span class="swatch" style="background:#C7774B;"></span>
+            <span class="swatch" style="background:#73866C;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">soft-organic</div>
+            <div class="pack-fonts">Young Serif / Figtree</div>
+            <p class="pack-desc">Warm sun-bleached linen, deep forest loam ink, rounded pebble containers, terracotta clay, and tranquil organic rhythm.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 7. Quiet-Luxury -->
+      <a href="../examples/quiet-luxury/index.html" class="pack-card">
+        <div class="card-thumb thumb-quiet-luxury">
+          <span class="thumb-tag">07 // Quiet-Luxury</span>
+          <div class="thumb-headline">Atelier Nocturne</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#0E0E10;"></span>
+            <span class="swatch" style="background:#EDE6DA;"></span>
+            <span class="swatch" style="background:#B89B5E;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">quiet-luxury</div>
+            <div class="pack-fonts">Cormorant Garamond / Manrope</div>
+            <p class="pack-desc">Obsidian dark canvas, champagne silk ink, brushed antique gold, micro uppercase labels tracked wide, and dignified stillness.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 8. Y2K-Chrome -->
+      <a href="../examples/y2k-chrome/index.html" class="pack-card">
+        <div class="card-thumb thumb-y2k-chrome">
+          <span class="thumb-tag">08 // Y2K-Chrome</span>
+          <div class="thumb-headline">CYBER CHROME 2.0</div>
+          <div class="thumb-swatches">
+            <span class="swatch" style="background:#E9EEFF;"></span>
+            <span class="swatch" style="background:#12123A;"></span>
+            <span class="swatch" style="background:#FF3D9A;"></span>
+            <span class="swatch" style="background:#00D2FF;"></span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <div>
+            <div class="pack-name">y2k-chrome</div>
+            <div class="pack-fonts">Unbounded / Sora</div>
+            <p class="pack-desc">Metallic chrome gradients, pill capsules, sticker badges, hot magenta accents, and spring hover wobble. WCAG AA compliant.</p>
+          </div>
+          <span class="card-link">Launch Live Demo &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <footer class="gallery-footer">
+      <p>Styledeck v0.1 &middot; Free MIT Licensed Repository &middot; Stop AI agents from building purple-gradient websites.</p>
+    </footer>
+  </div>
+</body>
+</html>
